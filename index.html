@@ -1,29 +1,309 @@
-/* ===== FLOATING HEARTS ===== */
-.heart {
-  position: fixed;
-  bottom: -30px;
-  font-size: 24px;
-  animation: floatUp 6s linear forwards;
-  opacity: 0.9;
-  pointer-events: none;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only My Valentine 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ===== BODY ===== */
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(to bottom,#8fd3f4,#eaf6ff);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity:1; }
-  100% { transform: translateY(-120vh) scale(1.8); opacity:0; }
+/* ===== INTRO ===== */
+#intro{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#000,#020202);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  animation:fadeOut 2s ease forwards;
+  animation-delay:6s;
+}
+#intro h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  text-align:center;
+  max-width:900px;
+  animation:cinematic 5s ease;
+}
+#intro span{margin-top:20px;opacity:.6}
+@keyframes cinematic{from{opacity:0;transform:translateY(50px)}to{opacity:1}}
+@keyframes fadeOut{to{opacity:0;pointer-events:none}}
+
+/* ===== CLOUDS ===== */
+.cloud{
+  position:absolute;
+  background:#fff;
+  border-radius:50px;
+  opacity:.35;
+  animation:cloudMove linear infinite;
+}
+.cloud:before,.cloud:after{
+  content:'';position:absolute;background:#fff;border-radius:50%;
+}
+.cloud:before{width:60px;height:60px;top:-30px;left:20px}
+.cloud:after{width:80px;height:80px;top:-40px;right:20px}
+@keyframes cloudMove{from{left:-300px}to{left:120%}}
+
+/* ===== GLASS CONTAINER ===== */
+.container{
+  max-width:950px;
+  margin:120px auto;
+  padding:50px;
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(22px);
+  border-radius:40px;
+  box-shadow:0 40px 120px rgba(0,0,0,.25);
+}
+h2{font-family:'Playfair Display',serif;margin:35px 0 15px}
+
+/* ===== BUTTONS ===== */
+button{
+  padding:15px 34px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,#6fb1fc,#a1c4fd);
+  color:#fff;
+  cursor:pointer;
+  margin:8px;
+  font-size:15px;
+  transition:.3s;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
+button:hover{transform:scale(1.1);box-shadow:0 20px 45px rgba(111,177,252,.8)}
+
+/* ===== SCORE ===== */
+.scoreBox{text-align:center;font-size:1.1rem}
+
+/* ===== POPUP ===== */
+#popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99;
+}
+.popup-box{
+  background:#fff;
+  padding:40px;
+  border-radius:30px;
+  animation:pop .4s ease;
+}
+@keyframes pop{from{transform:scale(.6)}to{transform:scale(1)}}
+
+/* ===== FLOAT ===== */
+.float{position:fixed;font-size:28px;animation:floatUp 3s linear forwards}
+@keyframes floatUp{to{transform:translateY(-260px);opacity:0}}
+
+/* ===== ROSES ===== */
+.petal{position:fixed;top:-50px;font-size:26px;animation:fall 4.5s linear forwards}
+@keyframes fall{to{transform:translateY(120vh) rotate(360deg);opacity:0}}
+
+/* ===== LETTER ===== */
+#letterScene{display:none;text-align:center}
+#bottle{font-size:120px;animation:floatBottle 3s ease-in-out infinite}
+@keyframes floatBottle{50%{transform:translateY(-15px)}}
+#break{display:none;font-size:90px}
+#letter{display:none;margin-top:30px;padding:35px;background:#fff;border-radius:25px}
+
+/* ===== RING ===== */
+#ringScene{display:none;background:radial-gradient(circle,#111,#000);color:#fff;text-align:center}
+#ringBox{font-size:140px;animation:boxFloat 3s ease-in-out infinite}
+@keyframes boxFloat{50%{transform:translateY(-18px)}}
+#ring{display:none;font-size:90px;filter:drop-shadow(0 0 30px gold)}
+#proposalText{display:none;font-family:'Great Vibes',cursive;font-size:3.2rem;margin-top:30px}
+.proposalBtns{display:none;margin-top:40px}
+
+/* ===== SCORE CARD ===== */
+#scoreCard{
+  display:none;
+  text-align:center;
+  background:radial-gradient(circle,#fff,#eaf6ff);
+}
+.scoreCircle{
+  width:160px;height:160px;margin:30px auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffd700,#ffecb3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.2rem;font-weight:600;
+  box-shadow:0 0 50px gold;
+}
+.signature{
+  font-family:'Great Vibes',cursive;
+  font-size:2rem;margin-top:40px;color:#6b9cff;
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+  <h1>“At the touch of love everyone becomes a poet.”</h1>
+  <span>— A little story for you —</span>
+</div>
+
+<div class="cloud" style="top:80px;width:260px;height:90px;animation-duration:90s"></div>
+<div class="cloud" style="top:160px;width:320px;height:110px;animation-duration:120s"></div>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_1bfe8f85e6.mp3">
+</audio>
+
+<!-- QUIZ -->
+<div class="container" id="quiz">
+<div class="scoreBox">Score ❤️ <span id="score">0</span> | Wrong ❌ <span id="wrong">0</span></div>
+
+<h2>1. When did I first fall for you?</h2>
+<button onclick="q1('May 22')">May 22</button>
+<button onclick="q1('July 28')">July 28</button>
+<button onclick="q1('Feb 22')">Feb 22</button>
+<button onclick="q1('January 22')">January 22</button>
+<button onclick="q1('idk')">I don't remember</button>
+
+<h2>2. When did I kiss you first?</h2>
+<button onclick="q2('Sep 7')">Sep 7</button>
+<button onclick="q2('October 15')">October 15</button>
+<button onclick="q2('December 20')">December 20</button>
+<button onclick="q2('no')">Not yet kissed</button>
+
+<h2>3. How much do you love me?</h2>
+<button onclick="q3('100')">100%</button>
+<button onclick="q3('200')">200%</button>
+<button onclick="q3('Infinity')">Infinity ♾️</button>
+<button onclick="q3('0')">0%</button>
+
+<h2>4. Will you be my Valentine?</h2>
+<button onclick="q4('Yes')">Yes 💕</button>
+<button id="noBtn">No ❌</button>
+</div>
+
+<!-- LETTER -->
+<div class="container" id="letterScene">
+  <div id="bottle">🍾</div>
+  <div id="break">💥</div>
+  <div id="letter">
+    <h2>💌 My Love</h2>
+    <p>You are my calm, my chaos, my forever 💙</p>
+  </div>
+</div>
+
+<!-- RING -->
+<div class="container" id="ringScene">
+  <div id="ringBox">🎁</div>
+  <div id="ring">💍</div>
+  <h2 id="proposalText">Will you be mine… forever?</h2>
+  <div class="proposalBtns">
+    <button onclick="finalYes()">Yes 💖</button>
+    <button id="finalNo">No ❌</button>
+  </div>
+</div>
+
+<!-- SCORE CARD -->
+<div class="container" id="scoreCard">
+  <h2>💖 Love Evaluation 💖</h2>
+  <div class="scoreCircle"><span id="finalScore"></span>/4</div>
+  <p id="scoreMessage"></p>
+  <div class="signature">— Yours forever 💙</div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" onclick="popup.style.display='none'">
+  <div class="popup-box"><p id="popupText"></p></div>
+</div>
+
+<script>
+let score=0,wrong=0,dead=false;
+
+function popupMsg(msg){
+ popupText.innerText=msg;
+ popup.style.display="flex";
+ floatFX();
+}
+function update(){scoreEl.innerText=score;wrongEl.innerText=wrong}
+function fail(){wrong++;update();if(wrong>=2){dead=true;popupMsg("⛔ DISQUALIFIED\nBF waiting 😤")}}
+function floatFX(){
+ let f=document.createElement("div");
+ f.className="float";f.innerText=Math.random()>0.5?"❤️":"💋";
+ f.style.left=Math.random()*100+"vw";
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),3000);
+}
+function roses(){
+ for(let i=0;i<30;i++){
+  let p=document.createElement("div");
+  p.className="petal";p.innerText="🌹";
+  p.style.left=Math.random()*100+"vw";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),4500);
+ }
 }
 
-/* ===== FALLING PETALS ===== */
-.petal {
-  position: fixed;
-  top: -40px;
-  font-size: 22px;
-  animation: fallDown 8s linear forwards;
-  opacity: 0.85;
-  pointer-events: none;
+function q1(a){
+ if(dead)return;
+ if(a==="May 22"){score++;popupMsg("💋 Kiss");roses();}
+ else{popupMsg(a==="Feb 22"?"😡 You're in trouble":a==="January 22"?"❌ Still wrong":a==="July 28"?"🤥 Liar":"😒 Think harder");fail();}
+ update();
+}
+function q2(a){
+ if(dead)return;
+ if(a==="Sep 7"){score++;popupMsg("💋💋 HUGE KISS");roses();}
+ else{popupMsg("😈 I will bite you after the test");fail();}
+ update();
+}
+function q3(a){
+ if(dead)return;
+ if(a==="Infinity"){score++;popupMsg("💙 Ponnuttan Ummmaaa 😘");roses();}
+ else{popupMsg(a==="100"?"❌ Not enough":a==="200"?"❌ Still small":"😡 I hate you");fail();}
+ update();
+}
+function q4(a){
+ if(dead)return;
+ if(a==="Yes"){
+  score++;popupMsg("💖 I love youuuuuuuuu");roses();update();
+  quiz.style.display="none";
+  setTimeout(()=>letterScene.style.display="block",1000);
+  setTimeout(()=>{
+    bottle.style.display="none";break.style.display="block";
+    setTimeout(()=>{break.style.display="none";letter.style.display="block"},600);
+  },2500);
+  setTimeout(()=>{letterScene.style.display="none";showRing()},6000);
+ }else popupMsg("⚠️ Invalid choice\nYou're only my Valentine 💘");
 }
 
-@keyframes fallDown {
-  0% { transform: translateX(0) rotate(0deg); }
-  100% { transform: translateX(80px) translateY(120vh) rotate(360deg); }
+function showRing(){
+ ringScene.style.display="block";
+ setTimeout(()=>ring.style.display="block",1200);
+ setTimeout(()=>proposalText.style.display="block",2500);
+ setTimeout(()=>document.querySelector(".proposalBtns").style.display="block",3500);
 }
+function finalYes(){
+ popupMsg("💍 Forever starts now ❤️");roses();
+ setTimeout(showScoreCard,3000);
+}
+function showScoreCard(){
+ ringScene.style.display="none";
+ scoreCard.style.display="block";
+ finalScore.innerText=score;
+ scoreMessage.innerText=score===4?"Perfect score. You own my heart 💙":"Still mine anyway 😘";
+}
+
+noBtn.onmouseover=()=>{noBtn.style.position="absolute";noBtn.style.left=Math.random()*80+"%";noBtn.style.top=Math.random()*80+"%";}
+finalNo.onmouseover=()=>{finalNo.style.left=Math.random()*160-80+"px";finalNo.style.top=Math.random()*120-60+"px";}
+</script>
+
+</body>
+</html>
