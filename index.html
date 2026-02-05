@@ -2,276 +2,271 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Only Yours 💙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Only My Valentine 💙</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(180deg, #7ecbff, #dff4ff);
-    overflow-x: hidden;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(#8fd3f4,#cfe9ff);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-/* Clouds */
-.cloud {
-    position: absolute;
-    background: white;
-    border-radius: 50px;
-    opacity: 0.7;
-    animation: float 90s linear infinite;
+/* ---------- INTRO ---------- */
+#intro{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#001,#000);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:999;
+  animation:fadeOut 2s ease forwards;
+  animation-delay:4s;
 }
-.cloud::before, .cloud::after {
-    content: "";
-    position: absolute;
-    background: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    top: -20px;
+#intro h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  animation:zoom 3s ease;
 }
-.cloud::before { left: 10px; }
-.cloud::after { right: 10px; }
+@keyframes zoom{from{transform:scale(.5);opacity:0}to{scale(1);opacity:1}}
+@keyframes fadeOut{to{opacity:0;pointer-events:none}}
 
-@keyframes float {
-    from { left: -200px; }
-    to { left: 120%; }
+/* ---------- CLOUDS ---------- */
+.cloud{
+  position:absolute;
+  background:#fff;
+  border-radius:50px;
+  opacity:.6;
+  animation:move 40s linear infinite;
 }
-
-/* Main Card */
-.container {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 40px;
-    background: rgba(255,255,255,0.28);
-    backdrop-filter: blur(18px);
-    border-radius: 28px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+.cloud:before,.cloud:after{
+  content:'';
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
 }
-
-h1 {
-    text-align: center;
-    color: #022;
-    margin-bottom: 8px;
-}
-
-.status {
-    text-align: center;
-    font-weight: 600;
-    color: #044;
-    margin-bottom: 35px;
+.cloud:before{width:60px;height:60px;top:-30px;left:10px}
+.cloud:after{width:80px;height:80px;top:-40px;right:10px}
+@keyframes move{
+  from{left:-200px}
+  to{left:110%}
 }
 
-.question {
-    margin-bottom: 35px;
+/* ---------- CONTAINER ---------- */
+.container{
+  max-width:850px;
+  margin:80px auto;
+  background:rgba(255,255,255,.92);
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 30px 80px rgba(0,0,0,.2);
+}
+h2{margin-bottom:15px;font-family:'Playfair Display',serif}
+
+/* ---------- BUTTONS ---------- */
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  background:#6ec6ff;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  transition:.3s;
+  margin:6px;
+}
+button:hover{transform:scale(1.1);background:#4fa8e3}
+
+/* ---------- POPUP ---------- */
+#popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+}
+.popup-box{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  animation:pop .4s ease;
+}
+@keyframes pop{from{transform:scale(.6)}to{scale(1)}}
+
+/* ---------- HEARTS ---------- */
+.heart{
+  position:fixed;
+  font-size:24px;
+  animation:float 3s linear forwards;
+}
+@keyframes float{
+  to{transform:translateY(-200px);opacity:0}
 }
 
-.question h2 {
-    font-size: 1.3rem;
-    color: #022;
-    margin-bottom: 15px;
+/* ---------- LOVE LETTER ---------- */
+#loveLetter{
+  display:none;
+  text-align:center;
+  animation:fade 2s ease;
 }
+@keyframes fade{from{opacity:0}to{opacity:1}}
 
-.options button {
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 16px;
-    border: none;
-    background: rgba(255,255,255,0.7);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.options button:hover {
-    background: white;
-    transform: translateY(-2px);
-}
-
-/* Popup */
-.popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.popup-box {
-    background: white;
-    padding: 32px;
-    border-radius: 24px;
-    max-width: 420px;
-    text-align: center;
-    font-size: 1.2rem;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-}
-
-.popup-box button {
-    margin-top: 22px;
-    padding: 10px 26px;
-    border-radius: 14px;
-    border: none;
-    background: #7ecbff;
-    font-size: 1rem;
-    cursor: pointer;
+.scoreBox{
+  text-align:center;
+  margin:20px 0;
+  font-weight:500;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Clouds -->
-<div class="cloud" style="width:160px;height:70px;top:40px;"></div>
-<div class="cloud" style="width:200px;height:80px;top:180px;animation-duration:120s;"></div>
-<div class="cloud" style="width:140px;height:60px;top:320px;animation-duration:80s;"></div>
-
-<div class="container">
-    <h1>💙 Valentine Test 💙</h1>
-    <div class="status">
-        Score: <span id="score">0</span> / 4 |
-        Wrong: <span id="wrong">0</span> / 2
-    </div>
-
-    <!-- Q1 -->
-    <div class="question">
-        <h2>1. When did I first fall for you?</h2>
-        <div class="options">
-            <button onclick="q1('May 22')">May 22</button>
-            <button onclick="q1('July 28')">July 28</button>
-            <button onclick="q1('Feb 22')">Feb 22</button>
-            <button onclick="q1('January 22')">January 22</button>
-            <button onclick="q1('Other')">I don’t remember</button>
-        </div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="question">
-        <h2>2. When did I kiss you first?</h2>
-        <div class="options">
-            <button onclick="q2('Sep 7')">Sep 7</button>
-            <button onclick="q2('October 15')">October 15</button>
-            <button onclick="q2('December 20')">December 20</button>
-            <button onclick="q2('Never')">Not yet kissed</button>
-        </div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="question">
-        <h2>3. How much do you love me?</h2>
-        <div class="options">
-            <button onclick="q3('100')">100%</button>
-            <button onclick="q3('200')">200%</button>
-            <button onclick="q3('Infinity')">Infinity</button>
-            <button onclick="q3('0')">0%</button>
-        </div>
-    </div>
-
-    <!-- Q4 -->
-    <div class="question">
-        <h2>4. Will you be my Valentine?</h2>
-        <div class="options">
-            <button onclick="q4('Yes')">Yes 💖</button>
-            <button onclick="q4('No')">No 😏</button>
-        </div>
-    </div>
+<!-- INTRO -->
+<div id="intro">
+  <h1>For My Only Valentine 💙</h1>
+  <p>Loading love...</p>
 </div>
 
-<!-- Popup -->
-<div class="popup" id="popup">
-    <div class="popup-box">
-        <div id="popupText"></div>
-        <button onclick="closePopup()">OK</button>
-    </div>
+<!-- CLOUDS -->
+<div class="cloud" style="top:40px;width:180px;height:60px;animation-duration:60s"></div>
+<div class="cloud" style="top:120px;width:240px;height:80px;animation-duration:80s"></div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<div class="container" id="quiz">
+
+<div class="scoreBox">
+Score ❤️ <span id="score">0</span> | Wrong ❌ <span id="wrong">0</span>
+</div>
+
+<h2>1. When did I first fall for you?</h2>
+<button onclick="q1('May 22')">May 22</button>
+<button onclick="q1('July 28')">July 28</button>
+<button onclick="q1('Feb 22')">Feb 22</button>
+<button onclick="q1('January 22')">January 22</button>
+<button onclick="q1('idk')">I don't remember</button>
+
+<h2>2. When did I kiss you first?</h2>
+<button onclick="q2('Sep 7')">Sep 7</button>
+<button onclick="q2('October 15')">October 15</button>
+<button onclick="q2('December 20')">December 20</button>
+<button onclick="q2('no')">Not yet kissed</button>
+
+<h2>3. How much do you love me?</h2>
+<button onclick="q3('100')">100%</button>
+<button onclick="q3('200')">200%</button>
+<button onclick="q3('Infinity')">Infinity ♾️</button>
+<button onclick="q3('0')">0%</button>
+
+<h2>4. Will you be my Valentine?</h2>
+<button onclick="q4('Yes')">Yes 💕</button>
+<button id="noBtn">No ❌</button>
+
+</div>
+
+<!-- LOVE LETTER -->
+<div class="container" id="loveLetter">
+<h2>💌 My Love Letter</h2>
+<p>
+You are my calm in chaos,  
+my smile on hard days,  
+my forever favorite person.  
+<br><br>
+I choose you — today, tomorrow, always 💙
+</p>
+</div>
+
+<!-- POPUP -->
+<div id="popup" onclick="closePopup()">
+  <div class="popup-box">
+    <p id="popupText"></p>
+  </div>
 </div>
 
 <script>
-let score = 0;
-let wrong = 0;
-let disqualified = false;
+let score=0,wrong=0,dead=false;
 
-function showPopup(msg) {
-    document.getElementById("popupText").innerText = msg;
-    document.getElementById("popup").style.display = "flex";
+function popup(msg){
+ document.getElementById("popupText").innerText=msg;
+ document.getElementById("popup").style.display="flex";
+ heart();
+}
+function closePopup(){
+ document.getElementById("popup").style.display="none";
 }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
+function update(){
+ document.getElementById("score").innerText=score;
+ document.getElementById("wrong").innerText=wrong;
 }
 
-function updateStatus() {
-    document.getElementById("score").innerText = score;
-    document.getElementById("wrong").innerText = wrong;
+function fail(){
+ wrong++;
+ update();
+ if(wrong>=2){
+   dead=true;
+   popup("⛔ DISQUALIFIED\nYour BF is waiting to scold you 😤");
+ }
 }
 
-function registerWrong() {
-    wrong++;
-    updateStatus();
-    if (wrong >= 2) {
-        disqualified = true;
-        showPopup("⛔ DISQUALIFIED\nYour BF is waiting to scold you 😤");
-    }
+function heart(){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerText=Math.random()>0.5?"❤️":"💋";
+ h.style.left=Math.random()*100+"vw";
+ h.style.bottom="0";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),3000);
 }
 
-/* Q1 */
-function q1(ans) {
-    if (disqualified) return;
-    if (ans === "May 22") {
-        score++;
-        showPopup("💋 Kiss!");
-        updateStatus();
-    } else {
-        if (ans === "Feb 22") showPopup("😡 You're in trouble");
-        else if (ans === "January 22") showPopup("❌ Still wrong");
-        else if (ans === "July 28") showPopup("🤥 Liar");
-        else showPopup("😒 Think harder");
-        registerWrong();
-    }
+/* QUESTIONS */
+function q1(a){
+ if(dead)return;
+ if(a==="May 22"){score++;popup("💋 Kiss!");}
+ else{popup(a==="Feb 22"?"😡 You're in trouble":a==="January 22"?"❌ Still wrong":a==="July 28"?"🤥 Liar":"😒 Think harder");fail();return;}
+ update();
+}
+function q2(a){
+ if(dead)return;
+ if(a==="Sep 7"){score++;popup("💋💋 HUGE KISS!");update();}
+ else{popup("😈 I will bite you after the test");fail();}
+}
+function q3(a){
+ if(dead)return;
+ if(a==="Infinity"){score++;popup("💙 I know because you're my Ponnuttan Ummmaaa 😘");update();}
+ else{popup(a==="100"?"❌ Not enough":a==="200"?"❌ Still small":"😡 I hate you");fail();}
+}
+function q4(a){
+ if(dead)return;
+ if(a==="Yes"){
+   score++;
+   popup("💖 You're my calm, my chaos, my smile… I love youuuuuuuuu");
+   update();
+   document.getElementById("quiz").style.display="none";
+   document.getElementById("loveLetter").style.display="block";
+ } else {
+   popup("⚠️ Invalid choice\nSystem detected: You're only my Valentine 💘");
+ }
 }
 
-/* Q2 */
-function q2(ans) {
-    if (disqualified) return;
-    if (ans === "Sep 7") {
-        score++;
-        showPopup("💋💋 HUGE KISS!");
-        updateStatus();
-    } else {
-        showPopup("😈 I will bite you after the test");
-        registerWrong();
-    }
-}
-
-/* Q3 */
-function q3(ans) {
-    if (disqualified) return;
-    if (ans === "Infinity") {
-        score++;
-        showPopup("💙 I know because you're my Ponnuttan Ummmaaa 😘");
-        updateStatus();
-    } else {
-        if (ans === "100") showPopup("❌ Not enough");
-        else if (ans === "200") showPopup("❌ Still small");
-        else showPopup("😡 I hate you");
-        registerWrong();
-    }
-}
-
-/* Q4 */
-function q4(ans) {
-    if (disqualified) return;
-    if (ans === "Yes") {
-        score++;
-        showPopup("💖 You're my calm, my chaos, my smile… I love youuuuuuuuu 💕");
-        updateStatus();
-    } else {
-        showPopup("⚠️ Invalid choice.\nSystem already detected: You're only my Valentine 💘");
-        registerWrong();
-    }
-}
+/* RUNAWAY NO */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+ noBtn.style.position="absolute";
+ noBtn.style.left=Math.random()*80+"%";
+ noBtn.style.top=Math.random()*80+"%";
+});
 </script>
 
 </body>
