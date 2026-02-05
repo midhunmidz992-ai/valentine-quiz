@@ -4,188 +4,213 @@
 <meta charset="UTF-8">
 <title>Only My Valentine 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
+
+/* CINEMATIC SKY */
 body{
   font-family:'Poppins',sans-serif;
-  background:radial-gradient(circle at top,#9ad9ff,#eef8ff);
   min-height:100vh;
+  background:
+    radial-gradient(1200px at 10% 10%,rgba(170,220,255,.6),transparent 60%),
+    radial-gradient(900px at 90% 30%,rgba(200,240,255,.5),transparent 55%),
+    linear-gradient(#dff3ff,#ffffff);
   overflow-x:hidden;
 }
 
-/* ---------- CINEMATIC INTRO ---------- */
+/* FILM GRAIN */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url('https://i.imgur.com/8QfKZ0n.png');
+  opacity:.05;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* CINEMA VIGNETTE */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  box-shadow:inset 0 0 260px rgba(0,0,0,.38);
+  pointer-events:none;
+  z-index:2;
+}
+
+/* INTRO */
 #intro{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle,#000,#020202);
+  background:radial-gradient(circle,#060606,#000);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
   z-index:999;
-  animation:fadeOut 2s ease forwards;
-  animation-delay:6s;
+  animation:introOut 2s ease forwards;
+  animation-delay:8s;
 }
 #intro h1{
   font-family:'Playfair Display',serif;
-  font-size:3.2rem;
-  text-align:center;
+  font-size:3.6rem;
   max-width:900px;
-  line-height:1.4;
-  animation:introText 5s ease;
+  text-align:center;
+  line-height:1.45;
+  opacity:0;
+  animation:fadeWords 6s ease forwards;
 }
 #intro span{
-  margin-top:20px;
+  margin-top:28px;
+  letter-spacing:6px;
   opacity:.6;
-  letter-spacing:4px;
 }
-@keyframes introText{
-  from{opacity:0;transform:translateY(60px)}
+
+@keyframes fadeWords{
+  from{opacity:0;transform:translateY(80px)}
   to{opacity:1;transform:none}
 }
-@keyframes fadeOut{
+@keyframes introOut{
   to{opacity:0;pointer-events:none}
 }
 
-/* ---------- CLOUDS ---------- */
+/* CLOUDS */
 .cloud{
   position:absolute;
-  background:#fff;
-  border-radius:50px;
-  opacity:.4;
-  animation:cloudMove linear infinite;
+  background:white;
+  border-radius:120px;
+  opacity:.28;
+  filter:blur(4px);
+  animation:cloud linear infinite;
 }
-.cloud:before,.cloud:after{
+.cloud::before,.cloud::after{
   content:'';
   position:absolute;
-  background:#fff;
+  background:white;
   border-radius:50%;
 }
-.cloud:before{width:60px;height:60px;top:-30px;left:15px}
-.cloud:after{width:80px;height:80px;top:-40px;right:15px}
-@keyframes cloudMove{
-  from{left:-250px}
+.cloud::before{width:90px;height:90px;top:-45px;left:25px}
+.cloud::after{width:120px;height:120px;top:-60px;right:25px}
+
+@keyframes cloud{
+  from{left:-400px}
   to{left:120%}
 }
 
-/* ---------- GLASS CONTAINER ---------- */
+/* GLASS CARD */
 .container{
-  max-width:950px;
-  margin:110px auto;
-  padding:45px;
-  background:rgba(255,255,255,.35);
-  backdrop-filter:blur(18px);
-  border-radius:35px;
+  position:relative;
+  z-index:5;
+  max-width:1000px;
+  margin:140px auto;
+  padding:60px;
+  background:rgba(255,255,255,.42);
+  backdrop-filter:blur(26px);
+  border-radius:48px;
   box-shadow:
-    0 40px 120px rgba(0,0,0,.25),
-    inset 0 0 60px rgba(255,255,255,.3);
+    0 60px 160px rgba(0,0,0,.28),
+    inset 0 0 80px rgba(255,255,255,.35);
 }
 
+/* HEADINGS */
 h2{
   font-family:'Playfair Display',serif;
-  margin:35px 0 18px;
-  font-size:1.7rem;
+  font-size:1.9rem;
+  margin:45px 0 24px;
 }
 
-/* ---------- BUTTONS ---------- */
+/* BUTTONS */
 button{
-  padding:15px 32px;
+  padding:17px 40px;
   border:none;
-  border-radius:50px;
-  background:linear-gradient(135deg,#6fb1fc,#a1c4fd);
+  border-radius:70px;
+  background:linear-gradient(135deg,#7bbcff,#b6dcff);
   color:#fff;
   font-size:15px;
+  margin:10px;
   cursor:pointer;
-  margin:8px;
-  transition:.4s;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:.45s;
+  box-shadow:0 14px 36px rgba(0,0,0,.2);
 }
 button:hover{
-  transform:scale(1.12);
-  box-shadow:0 15px 40px rgba(111,177,252,.7);
+  transform:translateY(-6px) scale(1.12);
+  box-shadow:0 26px 70px rgba(123,188,255,.95);
 }
 
-/* ---------- SCORE ---------- */
-.scoreBox{
-  text-align:center;
-  font-size:1.1rem;
-}
+/* SCORE */
+.scoreBox{text-align:center;font-size:1.15rem}
 
-/* ---------- POPUP ---------- */
+/* POPUP */
 #popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.7);
+  background:rgba(0,0,0,.75);
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:99;
+  z-index:50;
 }
 .popup-box{
-  background:rgba(255,255,255,.95);
-  padding:40px;
-  border-radius:30px;
-  text-align:center;
-  animation:pop .4s ease;
+  background:rgba(255,255,255,.96);
+  padding:44px;
+  border-radius:36px;
   max-width:420px;
-}
-@keyframes pop{
-  from{transform:scale(.6)}
-  to{transform:scale(1)}
+  text-align:center;
 }
 
-/* ---------- FLOATING ICONS ---------- */
+/* FLOAT ICONS */
 .float{
   position:fixed;
-  font-size:26px;
-  animation:floatUp 3s linear forwards;
+  bottom:0;
+  font-size:30px;
+  animation:floatUp 4s linear forwards;
 }
 @keyframes floatUp{
-  to{transform:translateY(-240px);opacity:0}
+  to{transform:translateY(-300px);opacity:0}
 }
 
-/* ---------- ROSE PETALS ---------- */
+/* ROSES */
 .petal{
   position:fixed;
-  top:-50px;
-  font-size:24px;
-  animation:fall 4.5s linear forwards;
+  top:-40px;
+  font-size:28px;
+  animation:fall 5.2s linear forwards;
 }
 @keyframes fall{
   to{transform:translateY(120vh) rotate(360deg);opacity:0}
 }
 
-/* ---------- LETTER SCENE ---------- */
+/* LETTER SCENE */
 #letterScene{display:none;text-align:center}
 #bottle{
-  font-size:120px;
-  animation:floatBottle 3s ease-in-out infinite;
+  font-size:140px;
+  animation:floatBottle 3.5s ease-in-out infinite;
 }
-@keyframes floatBottle{50%{transform:translateY(-15px)}}
-#break{display:none;font-size:80px}
+@keyframes floatBottle{
+  50%{transform:translateY(-20px)}
+}
+#break{display:none;font-size:100px}
 #letter{
   display:none;
-  margin-top:30px;
-  padding:35px;
-  background:rgba(255,255,255,.85);
-  border-radius:25px;
-  animation:letterIn 2s ease forwards;
+  margin-top:40px;
+  padding:50px;
+  background:rgba(255,255,255,.92);
+  border-radius:36px;
+  box-shadow:0 40px 110px rgba(0,0,0,.3);
 }
-@keyframes letterIn{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
+#letter h2{
+  font-family:'Great Vibes',cursive;
+  font-size:3.4rem;
 }
-#seal{display:none;font-size:60px;margin-top:20px}
-#finalLine{display:none;font-style:italic;margin-top:15px}
-#stayBtn{display:none;font-size:17px;margin-top:25px}
-#forever{
-  display:none;
-  font-size:22px;
-  margin-top:30px;
-  font-family:'Playfair Display',serif;
+#letter p{
+  font-size:1.12rem;
+  line-height:1.9;
 }
 </style>
 </head>
@@ -195,15 +220,15 @@ button:hover{
 <!-- INTRO -->
 <div id="intro">
   <h1>“At the touch of love everyone becomes a poet.”</h1>
-  <span>— A little story for you —</span>
+  <span>A PRIVATE LOVE STORY</span>
 </div>
 
 <!-- CLOUDS -->
-<div class="cloud" style="top:60px;width:240px;height:80px;animation-duration:80s"></div>
-<div class="cloud" style="top:140px;width:300px;height:100px;animation-duration:100s"></div>
+<div class="cloud" style="top:90px;width:320px;height:110px;animation-duration:120s"></div>
+<div class="cloud" style="top:180px;width:380px;height:130px;animation-duration:150s"></div>
 
 <!-- MUSIC -->
-<audio autoplay loop>
+<audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_1bfe8f85e6.mp3">
 </audio>
 
@@ -240,139 +265,84 @@ button:hover{
   <div id="bottle">🍾</div>
   <div id="break">💥</div>
   <div id="letter">
-    <h2>💌 My Love</h2>
+    <h2>My Love</h2>
     <p>
       Like this bottle, my heart was sealed…<br>
       until you touched it.<br><br>
-      You are my calm and my chaos,<br>
-      my poetry and my forever.
+      You are my calm, my chaos,<br>
+      my poetry, my forever.<br><br>
+      I choose you — always 💙
     </p>
-    <div id="seal">🕯️</div>
-    <p id="finalLine">This promise is sealed in my heart.</p>
-    <button id="stayBtn">Stay here a little longer 💙</button>
-    <p id="forever">Forever starts here.</p>
   </div>
 </div>
 
 <!-- POPUP -->
-<div id="popup" onclick="closePopup()">
-  <div class="popup-box">
-    <p id="popupText"></p>
-  </div>
+<div id="popup" onclick="popup.style.display='none'">
+  <div class="popup-box"><p id="popupText"></p></div>
 </div>
 
 <script>
 let score=0,wrong=0,dead=false;
-
-function popup(msg){
- popupText.innerText=msg;
- popupEl.style.display="flex";
- floatIcon();
-}
-function closePopup(){popupEl.style.display="none";}
-
-const popupEl=document.getElementById("popup");
+const popup=document.getElementById("popup");
 const popupText=document.getElementById("popupText");
-const scoreEl=document.getElementById("score");
-const wrongEl=document.getElementById("wrong");
 
-function update(){
- scoreEl.innerText=score;
- wrongEl.innerText=wrong;
-}
+setTimeout(()=>bgMusic.play().catch(()=>{}),9000);
+document.body.addEventListener("click",()=>bgMusic.play().catch(()=>{}),{once:true});
 
-function fail(){
- wrong++;
- update();
- if(wrong>=2){
-   dead=true;
-   popup("⛔ DISQUALIFIED\nYour BF is waiting to scold you 😤");
- }
-}
+function msg(t){popupText.innerText=t;popup.style.display="flex";floatIcon();}
+function update(){scoreEl.innerText=score;wrongEl.innerText=wrong;}
+function fail(){wrong++;update();if(wrong>=2){dead=true;msg("⛔ Disqualified 😤");}}
 
 function floatIcon(){
  let f=document.createElement("div");
  f.className="float";
  f.innerText=Math.random()>0.5?"❤️":"💋";
  f.style.left=Math.random()*100+"vw";
- f.style.bottom="0";
  document.body.appendChild(f);
- setTimeout(()=>f.remove(),3000);
+ setTimeout(()=>f.remove(),4000);
 }
-
 function roses(){
- for(let i=0;i<30;i++){
+ for(let i=0;i<40;i++){
   let p=document.createElement("div");
   p.className="petal";
   p.innerText="🌹";
   p.style.left=Math.random()*100+"vw";
   document.body.appendChild(p);
-  setTimeout(()=>p.remove(),4500);
+  setTimeout(()=>p.remove(),5200);
  }
 }
 
 /* QUESTIONS */
-function q1(a){
- if(dead)return;
- if(a==="May 22"){score++;popup("💋 Kiss!");roses();}
- else{popup(a==="Feb 22"?"😡 You're in trouble":a==="January 22"?"❌ Still wrong":a==="July 28"?"🤥 Liar":"😒 Think harder");fail();return;}
- update();
-}
-function q2(a){
- if(dead)return;
- if(a==="Sep 7"){score++;popup("💋💋 HUGE KISS!");roses();update();}
- else{popup("😈 I will bite you after the test");fail();}
-}
-function q3(a){
- if(dead)return;
- if(a==="Infinity"){score++;popup("💙 You're my Ponnuttan Ummmaaa 😘");roses();update();}
- else{popup(a==="100"?"❌ Not enough":a==="200"?"❌ Still small":"😡 I hate you");fail();}
-}
+function q1(a){if(dead)return;if(a==="May 22"){score++;msg("💋 Kiss");roses();}else{msg("❌ Wrong");fail();}update();}
+function q2(a){if(dead)return;if(a==="Sep 7"){score++;msg("💋💋 Huge Kiss");roses();}else{msg("😈 I will bite you");fail();}update();}
+function q3(a){if(dead)return;if(a==="Infinity"){score++;msg("💙 My Ponnuttan");roses();}else{msg("❌ Not enough");fail();}update();}
 function q4(a){
  if(dead)return;
  if(a==="Yes"){
-   score++;
-   popup("💖 You're my calm, my chaos, my smile… I love youuuuuuuuu");
-   roses();
-   update();
-   quiz.style.display="none";
-   setTimeout(()=>{
-     letterScene.style.display="block";
-     setTimeout(()=>{
-       bottle.style.display="none";
-       breakEl.style.display="block";
-       setTimeout(()=>{
-         breakEl.style.display="none";
-         letter.style.display="block";
-         setTimeout(sealPromise,800);
-       },600);
-     },2000);
-   },1200);
- } else {
-   popup("⚠️ Invalid choice\nSystem detected: You're only my Valentine 💘");
- }
-}
-
-function sealPromise(){
- document.getElementById("seal").style.display="block";
- setTimeout(()=>document.getElementById("finalLine").style.display="block",800);
- setTimeout(()=>{
-   stayBtn.style.display="inline-block";
-   stayBtn.onclick=()=>{
-     roses();
-     stayBtn.style.display="none";
-     setTimeout(()=>document.getElementById("forever").style.display="block",1500);
-   };
- },1500);
+  score++;update();
+  msg("💖 I love you endlessly");
+  roses();
+  quiz.style.display="none";
+  setTimeout(()=>{
+    letterScene.style.display="block";
+    setTimeout(()=>{
+      bottle.style.display="none";
+      break.style.display="block";
+      setTimeout(()=>{
+        break.style.display="none";
+        letter.style.display="block";
+      },800);
+    },2300);
+  },1400);
+ }else msg("⚠️ Invalid choice 💘");
 }
 
 /* RUNAWAY NO */
-const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",()=>{
+noBtn.onmouseover=()=>{
  noBtn.style.position="absolute";
  noBtn.style.left=Math.random()*80+"%";
  noBtn.style.top=Math.random()*80+"%";
-});
+};
 </script>
 
 </body>
