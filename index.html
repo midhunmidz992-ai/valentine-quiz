@@ -197,7 +197,7 @@ function q2(a){
 
 function q3(a){
  if(dead)return;
- if(a==="Infinity"){score++;popupMsg("💙 Ponnuttan Ummmaaa")}
+ if(a==="Infinity"){score++;popupMsg("💙 i know because you're my Ponnuttan, Ummaaaaahhhh")}
  else{popupMsg("❌ Wrong");fail()}
  update();
 }
@@ -206,7 +206,7 @@ function q4(a){
  if(dead)return;
  if(a==="Yes"){
    score++;
-   popupMsg("💖 I love you");
+   popupMsg("💖 Endless Love, many more kisses ");
    update();
    quiz.style.display="none";
    setTimeout(()=>letterScene.style.display="block",1000);
@@ -230,7 +230,7 @@ function finalYes(){
  ringScene.style.display="none";
  scoreCard.style.display="block";
  document.getElementById("finalScore").innerText=score;
- document.getElementById("scoreMessage").innerText="You own my heart 💙";
+ document.getElementById("scoreMessage").innerText="Congrats you're qualified the tset and earned my love certificate 💙";
 }
 
 noBtn.onmouseover=()=>{noBtn.style.position="absolute";noBtn.style.left=Math.random()*80+"%";}
