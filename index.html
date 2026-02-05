@@ -9,154 +9,162 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-    font-family:'Playfair Display',serif;
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
+  font-family:'Playfair Display',serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* 🌊 Sea background */
+/* 🌊 SEA WAVES */
 .ocean{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(#0a2a43,#000);
-    z-index:-3;
+  position:fixed;
+  inset:0;
+  background:linear-gradient(#0a2a43,#000);
+  z-index:-5;
 }
-
 .wave{
-    position:absolute;
-    width:200%;
-    height:200px;
-    background:rgba(255,255,255,0.08);
-    border-radius:100%;
-    bottom:-100px;
-    animation:wave 15s linear infinite;
+  position:absolute;
+  width:200%;
+  height:180px;
+  background:rgba(255,255,255,0.08);
+  border-radius:50%;
+  bottom:-90px;
+  animation:wave 18s linear infinite;
 }
-.wave:nth-child(2){animation-duration:22s;opacity:.4}
+.wave:nth-child(2){animation-duration:26s;opacity:.4}
 
 @keyframes wave{
-    to{transform:translateX(-50%)}
+  to{transform:translateX(-50%)}
 }
 
-/* 🎵 Music hint */
-.music{
-    position:fixed;
-    top:10px;
-    right:10px;
-    font-size:14px;
-    opacity:.7;
-}
-
-/* 💫 petals */
+/* 💫 ROSE PETALS */
 .petal{
-    position:fixed;
-    top:-30px;
-    width:12px;
-    height:12px;
-    background:radial-gradient(circle,#ff6b81,#c44569);
-    border-radius:50%;
-    animation:fall linear infinite;
+  position:fixed;
+  top:-30px;
+  width:12px;
+  height:12px;
+  background:radial-gradient(circle,#ff6b81,#c44569);
+  border-radius:50%;
+  animation:fall linear infinite;
+  pointer-events:none;
 }
-
 @keyframes fall{
-    to{transform:translateY(110vh) rotate(360deg)}
+  to{transform:translateY(110vh) rotate(360deg)}
 }
 
-/* 🎬 sections */
+/* 🎵 MUSIC LABEL */
+.music{
+  position:fixed;
+  top:10px;
+  right:10px;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* 📦 SECTIONS */
 .section{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    padding:30px;
-    text-align:center;
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
-/* 🎥 intro */
-.intro h1{
-    font-size:38px;
-    margin-bottom:20px;
-}
-.intro p{
-    font-style:italic;
-    opacity:.9;
-}
+.active{display:flex}
+
+/* 🎬 INTRO */
+.intro h1{font-size:36px;margin-bottom:20px}
+.intro p{opacity:.85;font-style:italic}
 .start-btn{
-    margin-top:30px;
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    font-size:18px;
-    cursor:pointer;
+  margin-top:30px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
 }
 
-/* ❓ quiz */
-.quiz h2{margin-bottom:20px}
+/* ❓ QUIZ */
+.score{margin-bottom:15px;font-size:18px}
+.card{
+  background:rgba(0,0,0,.6);
+  padding:25px;
+  border-radius:20px;
+  width:100%;
+  max-width:420px;
+}
+.card h2{margin-bottom:15px}
+
 .options button{
-    display:block;
-    margin:10px auto;
-    padding:12px 25px;
-    width:260px;
-    border:none;
-    border-radius:25px;
-    font-size:16px;
-    cursor:pointer;
+  display:block;
+  width:100%;
+  margin:8px 0;
+  padding:12px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
 }
 
+.options button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+/* 🏃 NO BUTTON */
+.no-box{position:relative;height:60px}
 .no-btn{
-    position:relative;
+  position:absolute;
 }
 
-/* 🍾 bottle */
+/* 📸 PHOTO */
+.photo{
+  width:100%;
+  max-width:300px;
+  border-radius:15px;
+  margin-bottom:15px;
+}
+
+/* 🍾 BOTTLE */
 .bottle{
-    font-size:80px;
-    cursor:pointer;
-    animation:float 3s infinite;
+  font-size:80px;
+  cursor:pointer;
+  animation:float 3s infinite;
 }
-
-@keyframes float{
-    50%{transform:translateY(-15px)}
-}
-
-.break{
-    animation:break 1s forwards;
-}
-
+@keyframes float{50%{transform:translateY(-15px)}}
+.break{animation:break 1s forwards}
 @keyframes break{
-    to{transform:scale(0) rotate(720deg);opacity:0}
+  to{transform:scale(0) rotate(720deg);opacity:0}
 }
-
 .girl{
-    font-size:70px;
-    opacity:0;
-    transition:2s;
+  font-size:70px;
+  opacity:0;
+  transition:2s;
 }
 
-/* 📜 letter */
+/* 📜 LETTER */
 .letter{
-    display:none;
-    max-width:900px;
-    background:rgba(0,0,0,.6);
-    padding:40px;
-    border-radius:20px;
-    line-height:1.8;
+  display:none;
+  max-width:900px;
+  background:rgba(0,0,0,.65);
+  padding:40px;
+  border-radius:20px;
+  line-height:1.8;
+  text-align:left;
 }
-
 .signature{
-    margin-top:30px;
-    font-family:'Great Vibes',cursive;
-    font-size:30px;
+  margin-top:30px;
+  font-family:'Great Vibes',cursive;
+  font-size:32px;
 }
-
 .ring{
-    animation:sparkle 1.5s infinite;
+  animation:sparkle 1.5s infinite;
 }
-
 @keyframes sparkle{
-    50%{text-shadow:0 0 20px gold}
+  50%{text-shadow:0 0 20px gold}
 }
 </style>
 </head>
@@ -164,114 +172,182 @@ body{
 <body>
 
 <audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2023/03/20/audio_7f0f5ccf84.mp3">
+  <source src="https://cdn.pixabay.com/download/audio/2023/03/20/audio_7f0f5ccf84.mp3">
 </audio>
 
 <div class="music">🎵 Soft violin playing</div>
 
 <div class="ocean">
-    <div class="wave"></div>
-    <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
 </div>
 
-<!-- 🎬 INTRO -->
-<div class="section intro" id="intro">
-    <h1>At the touch of love,<br>everyone becomes a poet</h1>
-    <p>Something special is waiting for you 💖</p>
-    <button class="start-btn" onclick="startQuiz()">Start</button>
+<!-- INTRO -->
+<div class="section intro active" id="intro">
+  <h1>At the touch of love,<br>everyone becomes a poet</h1>
+  <p>A small journey for you 💖</p>
+  <button class="start-btn" onclick="nextSection(1)">Start</button>
 </div>
 
-<!-- ❓ QUIZ -->
-<div class="section quiz" id="quiz" style="display:none">
-    <h2>When did I first fall for you? 💭</h2>
-    <div class="options">
-        <button onclick="wrong()">July 28</button>
-        <button onclick="correct()">May 22 💖</button>
-        <button onclick="alert('You’re in trouble 😜')">Feb 22</button>
-        <button onclick="alert('Still wrong 😅')">January 22</button>
-        <button class="no-btn" id="noBtn">I don’t remember 🙈</button>
+<!-- QUIZ -->
+<div class="section active" id="quiz" style="display:none">
+  <div class="score">Score: <span id="score">0</span>/4</div>
+  <div class="card">
+    <h2 id="qText"></h2>
+    <img id="qPhoto" class="photo" style="display:none">
+    <div class="options" id="options"></div>
+  </div>
+</div>
+
+<!-- FINAL QUESTION -->
+<div class="section" id="finalQ">
+  <div class="card">
+    <h2>Will you be my Valentine? 💘</h2>
+    <button onclick="yes()">YES ❤️</button>
+    <div class="no-box">
+      <button class="no-btn" id="noBtn">NO 🙈</button>
     </div>
+  </div>
 </div>
 
-<!-- 🍾 BOTTLE -->
-<div class="section" id="bottleScene" style="display:none">
-    <div class="bottle" onclick="openLetter()">🍾</div>
-    <div class="girl" id="girl">👩‍❤️‍💋‍👨</div>
+<!-- BOTTLE -->
+<div class="section" id="bottleScene">
+  <div class="bottle" onclick="openLetter()">🍾</div>
+  <div class="girl" id="girl">👩‍❤️‍💋‍👨</div>
 </div>
 
-<!-- 📜 LETTER -->
-<div class="section">
-<div class="letter" id="letter">
+<!-- LETTER -->
+<div class="section" id="letterSection">
+  <div class="letter" id="letter">
+    <p><strong>Devumma,</strong></p>
 
-<p><strong>Devumma,</strong></p>
+    <p>I find myself reliving every little moment that led me to you from a stranger, to a friend, to the love of my life.</p>
 
-<p>I find myself reliving every little moment that led me to you from a stranger, to a friend, to the love of my life.</p>
+    <p>I still remember the first day we met. I never imagined that the girl I met that day would one day become the love of my life, my future, my Devumma.</p>
 
-<p>I still remember the first day we met. I never imagined that the girl I met that day would one day become the love of my life, my future, my Devumma.</p>
+    <p>I still remember our first chat a simple “Hi” that somehow felt like the beginning of a beautiful story.</p>
 
-<p>I still remember our first chat a simple “Hi” that somehow felt like the beginning of a beautiful story.</p>
+    <p>Yes, we’ve had our fights. But even in those moments, you never stopped being my Devumma.</p>
 
-<p>Soon after, we had our first call. I was nervous, excited, and honestly a little shy.</p>
+    <p>And now, my heart counts down every moment until <span class="ring">💍 September 7th</span> our engagement day.</p>
 
-<p>And then… our first video call that magical moment when my screen lit up with your smile.</p>
+    <p>And I promise, from our first hello to our last breath I am yours, Always.</p>
 
-<p>I still remember the first gift you gave me. It meant the world because it came from you, with love.</p>
-
-<p>Yes, we’ve had our fights. But even in those moments, you never stopped being my Devumma.</p>
-
-<p>And now, my heart counts down every moment until <span class="ring">💍 September 7th</span> our engagement day.</p>
-
-<p>And I promise, from our first hello to our last breath I am yours, Always.</p>
-
-<div class="signature">
-With endless love,<br>
-Your Kannan kutty ❤️
-</div>
-
-</div>
+    <div class="signature">
+      With endless love,<br>
+      Your Kannan kutty ❤️
+    </div>
+  </div>
 </div>
 
 <script>
-/* petals */
-for(let i=0;i<25;i++){
- let p=document.createElement("div");
- p.className="petal";
- p.style.left=Math.random()*100+"vw";
- p.style.animationDuration=5+Math.random()*5+"s";
- document.body.appendChild(p);
-}
+const questions=[
+ {
+  q:"When did I first fall for you?",
+  options:["May 22","Feb 22","January 22","I don’t remember"],
+  correct:0
+ },
+ {
+  q:"When did I kiss you first?",
+  options:["Sep 7","October 18","December 10","Not yet kissed"],
+  correct:0
+ },
+ {
+  q:"Where did we click this photo?",
+  photo:"photo.jpg",
+  options:["Your home","My home","Someone’s home"],
+  correct:2
+ },
+ {
+  q:"How much do you love me?",
+  options:["100%","200%","Infinity"],
+  correct:2
+ }
+];
 
-/* quiz */
-function startQuiz(){
+let index=0, score=0;
+
+function nextSection(step){
  document.getElementById("intro").style.display="none";
  document.getElementById("quiz").style.display="flex";
+ loadQuestion();
 }
 
-function correct(){
- alert("Correct 😘");
- document.getElementById("quiz").style.display="none";
+function loadQuestion(){
+ const q=questions[index];
+ document.getElementById("qText").innerText=q.q;
+ const opts=document.getElementById("options");
+ opts.innerHTML="";
+ document.getElementById("qPhoto").style.display="none";
+
+ if(q.photo){
+   const img=document.getElementById("qPhoto");
+   img.src=q.photo;
+   img.style.display="block";
+ }
+
+ q.options.forEach((o,i)=>{
+   const b=document.createElement("button");
+   b.innerText=o;
+   b.onclick=()=>answer(i,b);
+   opts.appendChild(b);
+ });
+}
+
+function answer(i,btn){
+ const q=questions[index];
+ document.querySelectorAll(".options button").forEach(b=>b.disabled=true);
+
+ if(i===q.correct){
+   score++;
+   petals();
+   alert("😘");
+ }else{
+   alert("😅");
+ }
+ document.getElementById("score").innerText=score;
+
+ setTimeout(()=>{
+   index++;
+   if(index<questions.length) loadQuestion();
+   else{
+     document.getElementById("quiz").style.display="none";
+     document.getElementById("finalQ").style.display="flex";
+   }
+ },700);
+}
+
+function petals(){
+ for(let i=0;i<15;i++){
+   let p=document.createElement("div");
+   p.className="petal";
+   p.style.left=Math.random()*100+"vw";
+   p.style.animationDuration=4+Math.random()*3+"s";
+   document.body.appendChild(p);
+   setTimeout(()=>p.remove(),7000);
+ }
+}
+
+const noBtn=document.getElementById("noBtn");
+noBtn.onmouseover=()=>{
+ noBtn.style.left=Math.random()*200+"px";
+ noBtn.style.top=Math.random()*30+"px";
+};
+
+function yes(){
+ alert("Thanks ❤️");
+ document.getElementById("finalQ").style.display="none";
  document.getElementById("bottleScene").style.display="flex";
 }
 
-function wrong(){
- alert("Wrong 😜 Try again");
-}
-
-/* NO button run */
-const noBtn=document.getElementById("noBtn");
-noBtn.onmouseover=()=>{
- noBtn.style.left=Math.random()*200-100+"px";
- noBtn.style.top=Math.random()*200-100+"px";
-};
-
-/* bottle */
 function openLetter(){
  document.querySelector(".bottle").classList.add("break");
  document.getElementById("girl").style.opacity=1;
  setTimeout(()=>{
+   document.getElementById("bottleScene").style.display="none";
+   document.getElementById("letterSection").style.display="flex";
    document.getElementById("letter").style.display="block";
-   window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
- },1500);
+ },1200);
 }
 </script>
 
