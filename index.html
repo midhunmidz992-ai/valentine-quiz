@@ -10,20 +10,20 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Poppins',sans-serif;
-  background:radial-gradient(circle at top,#9ad9ff,#eaf6ff);
+  background:radial-gradient(circle at top,#9ad9ff,#eef8ff);
   min-height:100vh;
   overflow-x:hidden;
 }
 
-/* ===== CINEMATIC INTRO ===== */
+/* ---------- CINEMATIC INTRO ---------- */
 #intro{
   position:fixed;
   inset:0;
   background:radial-gradient(circle,#000,#020202);
   color:#fff;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   flex-direction:column;
   z-index:999;
   animation:fadeOut 2s ease forwards;
@@ -35,22 +35,22 @@ body{
   text-align:center;
   max-width:900px;
   line-height:1.4;
-  animation:cinematicText 5s ease;
+  animation:introText 5s ease;
 }
 #intro span{
   margin-top:20px;
   opacity:.6;
   letter-spacing:4px;
 }
-@keyframes cinematicText{
-  from{opacity:0;transform:translateY(60px) scale(.9)}
+@keyframes introText{
+  from{opacity:0;transform:translateY(60px)}
   to{opacity:1;transform:none}
 }
 @keyframes fadeOut{
   to{opacity:0;pointer-events:none}
 }
 
-/* ===== CLOUDS ===== */
+/* ---------- CLOUDS ---------- */
 .cloud{
   position:absolute;
   background:#fff;
@@ -71,7 +71,7 @@ body{
   to{left:120%}
 }
 
-/* ===== PREMIUM GLASS CARD ===== */
+/* ---------- GLASS CONTAINER ---------- */
 .container{
   max-width:950px;
   margin:110px auto;
@@ -90,7 +90,7 @@ h2{
   font-size:1.7rem;
 }
 
-/* ===== BUTTONS ===== */
+/* ---------- BUTTONS ---------- */
 button{
   padding:15px 32px;
   border:none;
@@ -108,14 +108,13 @@ button:hover{
   box-shadow:0 15px 40px rgba(111,177,252,.7);
 }
 
-/* ===== SCORE ===== */
+/* ---------- SCORE ---------- */
 .scoreBox{
   text-align:center;
-  font-weight:500;
   font-size:1.1rem;
 }
 
-/* ===== POPUP ===== */
+/* ---------- POPUP ---------- */
 #popup{
   position:fixed;
   inset:0;
@@ -138,7 +137,7 @@ button:hover{
   to{transform:scale(1)}
 }
 
-/* ===== FLOAT EFFECTS ===== */
+/* ---------- FLOATING ICONS ---------- */
 .float{
   position:fixed;
   font-size:26px;
@@ -148,7 +147,7 @@ button:hover{
   to{transform:translateY(-240px);opacity:0}
 }
 
-/* ===== ROSE PETALS ===== */
+/* ---------- ROSE PETALS ---------- */
 .petal{
   position:fixed;
   top:-50px;
@@ -159,27 +158,14 @@ button:hover{
   to{transform:translateY(120vh) rotate(360deg);opacity:0}
 }
 
-/* ===== GLASS BOTTLE LETTER ===== */
-#letterScene{
-  display:none;
-  text-align:center;
-}
+/* ---------- LETTER SCENE ---------- */
+#letterScene{display:none;text-align:center}
 #bottle{
   font-size:120px;
   animation:floatBottle 3s ease-in-out infinite;
 }
-@keyframes floatBottle{
-  50%{transform:translateY(-15px)}
-}
-#break{
-  display:none;
-  font-size:80px;
-  animation:shatter .6s ease;
-}
-@keyframes shatter{
-  from{transform:scale(.6)}
-  to{transform:scale(1.3)}
-}
+@keyframes floatBottle{50%{transform:translateY(-15px)}}
+#break{display:none;font-size:80px}
 #letter{
   display:none;
   margin-top:30px;
@@ -187,11 +173,19 @@ button:hover{
   background:rgba(255,255,255,.85);
   border-radius:25px;
   animation:letterIn 2s ease forwards;
-  box-shadow:0 30px 80px rgba(0,0,0,.25);
 }
 @keyframes letterIn{
   from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:none}
+}
+#seal{display:none;font-size:60px;margin-top:20px}
+#finalLine{display:none;font-style:italic;margin-top:15px}
+#stayBtn{display:none;font-size:17px;margin-top:25px}
+#forever{
+  display:none;
+  font-size:22px;
+  margin-top:30px;
+  font-family:'Playfair Display',serif;
 }
 </style>
 </head>
@@ -241,21 +235,22 @@ button:hover{
 <button id="noBtn">No ❌</button>
 </div>
 
-<!-- LETTER SCENE -->
+<!-- LETTER -->
 <div class="container" id="letterScene">
   <div id="bottle">🍾</div>
   <div id="break">💥</div>
   <div id="letter">
     <h2>💌 My Love</h2>
     <p>
-      Like this bottle, my heart was sealed…  
-      until you touched it.  
-      <br><br>
-      You are my calm, my chaos,  
-      my poetry, my forever.  
-      <br><br>
-      I choose you — always 💙
+      Like this bottle, my heart was sealed…<br>
+      until you touched it.<br><br>
+      You are my calm and my chaos,<br>
+      my poetry and my forever.
     </p>
+    <div id="seal">🕯️</div>
+    <p id="finalLine">This promise is sealed in my heart.</p>
+    <button id="stayBtn">Stay here a little longer 💙</button>
+    <p id="forever">Forever starts here.</p>
   </div>
 </div>
 
@@ -275,15 +270,16 @@ function popup(msg){
  floatIcon();
 }
 function closePopup(){popupEl.style.display="none";}
+
 const popupEl=document.getElementById("popup");
 const popupText=document.getElementById("popupText");
+const scoreEl=document.getElementById("score");
+const wrongEl=document.getElementById("wrong");
 
 function update(){
  scoreEl.innerText=score;
  wrongEl.innerText=wrong;
 }
-const scoreEl=document.getElementById("score");
-const wrongEl=document.getElementById("wrong");
 
 function fail(){
  wrong++;
@@ -303,6 +299,7 @@ function floatIcon(){
  document.body.appendChild(f);
  setTimeout(()=>f.remove(),3000);
 }
+
 function roses(){
  for(let i=0;i<30;i++){
   let p=document.createElement("div");
@@ -342,17 +339,31 @@ function q4(a){
    setTimeout(()=>{
      letterScene.style.display="block";
      setTimeout(()=>{
-       document.getElementById("bottle").style.display="none";
-       document.getElementById("break").style.display="block";
+       bottle.style.display="none";
+       breakEl.style.display="block";
        setTimeout(()=>{
-         document.getElementById("break").style.display="none";
-         document.getElementById("letter").style.display="block";
+         breakEl.style.display="none";
+         letter.style.display="block";
+         setTimeout(sealPromise,800);
        },600);
      },2000);
    },1200);
  } else {
    popup("⚠️ Invalid choice\nSystem detected: You're only my Valentine 💘");
  }
+}
+
+function sealPromise(){
+ document.getElementById("seal").style.display="block";
+ setTimeout(()=>document.getElementById("finalLine").style.display="block",800);
+ setTimeout(()=>{
+   stayBtn.style.display="inline-block";
+   stayBtn.onclick=()=>{
+     roses();
+     stayBtn.style.display="none";
+     setTimeout(()=>document.getElementById("forever").style.display="block",1500);
+   };
+ },1500);
 }
 
 /* RUNAWAY NO */
