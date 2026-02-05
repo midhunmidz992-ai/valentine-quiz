@@ -2,353 +2,321 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Devumma ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Only Valentine 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:'Playfair Display',serif;
-  background:#000;
-  color:#fff;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(#87cefa,#eaf6ff);
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-/* 🌊 SEA WAVES */
-.ocean{
+/* CINEMATIC INTRO */
+#intro{
   position:fixed;
   inset:0;
-  background:linear-gradient(#0a2a43,#000);
-  z-index:-5;
+  background:linear-gradient(120deg,#000,#111);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:999;
+  animation:fadeOut 2s ease forwards;
+  animation-delay:5s;
 }
-.wave{
-  position:absolute;
-  width:200%;
-  height:180px;
-  background:rgba(255,255,255,0.08);
-  border-radius:50%;
-  bottom:-90px;
-  animation:wave 18s linear infinite;
+#intro h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  text-align:center;
+  max-width:800px;
+  line-height:1.4;
+  animation:cinematic 4s ease;
 }
-.wave:nth-child(2){animation-duration:26s;opacity:.4}
-
-@keyframes wave{
-  to{transform:translateX(-50%)}
-}
-
-/* 💫 ROSE PETALS */
-.petal{
-  position:fixed;
-  top:-30px;
-  width:12px;
-  height:12px;
-  background:radial-gradient(circle,#ff6b81,#c44569);
-  border-radius:50%;
-  animation:fall linear infinite;
-  pointer-events:none;
-}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg)}
-}
-
-/* 🎵 MUSIC LABEL */
-.music{
-  position:fixed;
-  top:10px;
-  right:10px;
-  font-size:13px;
+#intro p{
+  margin-top:20px;
+  letter-spacing:3px;
   opacity:.7;
 }
-
-/* 📦 SECTIONS */
-.section{
-  min-height:100vh;
-  display:none;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
+@keyframes cinematic{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeOut{
+  to{opacity:0;pointer-events:none}
 }
 
-.active{display:flex}
-
-/* 🎬 INTRO */
-.intro h1{font-size:36px;margin-bottom:20px}
-.intro p{opacity:.85;font-style:italic}
-.start-btn{
-  margin-top:30px;
-  padding:12px 30px;
-  border:none;
-  border-radius:30px;
-  font-size:18px;
-  cursor:pointer;
-}
-
-/* ❓ QUIZ */
-.score{margin-bottom:15px;font-size:18px}
-.card{
-  background:rgba(0,0,0,.6);
-  padding:25px;
-  border-radius:20px;
-  width:100%;
-  max-width:420px;
-}
-.card h2{margin-bottom:15px}
-
-.options button{
-  display:block;
-  width:100%;
-  margin:8px 0;
-  padding:12px;
-  border:none;
-  border-radius:25px;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.options button:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-/* 🏃 NO BUTTON */
-.no-box{position:relative;height:60px}
-.no-btn{
+/* CLOUDS */
+.cloud{
   position:absolute;
+  background:#fff;
+  border-radius:50px;
+  opacity:.5;
+  animation:move linear infinite;
+}
+.cloud:before,.cloud:after{
+  content:'';
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
+}
+.cloud:before{width:60px;height:60px;top:-30px;left:10px}
+.cloud:after{width:80px;height:80px;top:-40px;right:10px}
+@keyframes move{
+  from{left:-200px}
+  to{left:110%}
 }
 
-/* 📸 PHOTO */
-.photo{
-  width:100%;
-  max-width:300px;
-  border-radius:15px;
-  margin-bottom:15px;
-}
-
-/* 🍾 BOTTLE */
-.bottle{
-  font-size:80px;
-  cursor:pointer;
-  animation:float 3s infinite;
-}
-@keyframes float{50%{transform:translateY(-15px)}}
-.break{animation:break 1s forwards}
-@keyframes break{
-  to{transform:scale(0) rotate(720deg);opacity:0}
-}
-.girl{
-  font-size:70px;
-  opacity:0;
-  transition:2s;
-}
-
-/* 📜 LETTER */
-.letter{
-  display:none;
+/* MAIN CARD */
+.container{
   max-width:900px;
-  background:rgba(0,0,0,.65);
+  margin:90px auto;
   padding:40px;
-  border-radius:20px;
-  line-height:1.8;
-  text-align:left;
+  background:rgba(255,255,255,.95);
+  border-radius:30px;
+  box-shadow:0 40px 120px rgba(0,0,0,.25);
+  backdrop-filter:blur(10px);
 }
-.signature{
-  margin-top:30px;
-  font-family:'Great Vibes',cursive;
-  font-size:32px;
+
+h2{
+  font-family:'Playfair Display',serif;
+  margin:25px 0 15px;
 }
-.ring{
-  animation:sparkle 1.5s infinite;
+
+/* BUTTONS */
+button{
+  padding:14px 28px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#6fb1fc,#a1c4fd);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  margin:6px;
+  transition:.4s;
 }
-@keyframes sparkle{
-  50%{text-shadow:0 0 20px gold}
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 30px rgba(111,177,252,.6);
 }
+
+/* SCORE */
+.scoreBox{
+  text-align:center;
+  font-weight:500;
+  margin-bottom:20px;
+}
+
+/* POPUP */
+#popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+}
+.popup-box{
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  text-align:center;
+  animation:pop .4s ease;
+  max-width:400px;
+}
+@keyframes pop{
+  from{transform:scale(.7)}
+  to{transform:scale(1)}
+}
+
+/* HEARTS & KISSES */
+.float{
+  position:fixed;
+  font-size:26px;
+  animation:floatUp 3s linear forwards;
+}
+@keyframes floatUp{
+  to{transform:translateY(-220px);opacity:0}
+}
+
+/* ROSE PETALS */
+.petal{
+  position:fixed;
+  top:-40px;
+  font-size:22px;
+  animation:fall 4s linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* LOVE LETTER */
+#loveLetter{
+  display:none;
+  text-align:center;
+  animation:fade 2s ease;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
+<div id="intro">
+  <h1>“At the touch of love everyone becomes a poet.”</h1>
+  <p>— Loading something beautiful —</p>
+</div>
+
+<!-- CLOUDS -->
+<div class="cloud" style="top:50px;width:220px;height:70px;animation-duration:70s"></div>
+<div class="cloud" style="top:130px;width:280px;height:90px;animation-duration:90s"></div>
+
+<!-- MUSIC -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/03/20/audio_7f0f5ccf84.mp3">
+  <source src="https://cdn.pixabay.com/audio/2023/03/06/audio_6b2fa77c9f.mp3">
 </audio>
 
-<div class="music">🎵 Soft violin playing</div>
+<div class="container" id="quiz">
 
-<div class="ocean">
-  <div class="wave"></div>
-  <div class="wave"></div>
+<div class="scoreBox">
+Score ❤️ <span id="score">0</span> | Wrong ❌ <span id="wrong">0</span>
 </div>
 
-<!-- INTRO -->
-<div class="section intro active" id="intro">
-  <h1>At the touch of love,<br>everyone becomes a poet</h1>
-  <p>A small journey for you 💖</p>
-  <button class="start-btn" onclick="nextSection(1)">Start</button>
+<h2>1. When did I first fall for you?</h2>
+<button onclick="q1('May 22')">May 22</button>
+<button onclick="q1('July 28')">July 28</button>
+<button onclick="q1('Feb 22')">Feb 22</button>
+<button onclick="q1('January 22')">January 22</button>
+<button onclick="q1('idk')">I don't remember</button>
+
+<h2>2. When did I kiss you first?</h2>
+<button onclick="q2('Sep 7')">Sep 7</button>
+<button onclick="q2('October 15')">October 15</button>
+<button onclick="q2('December 20')">December 20</button>
+<button onclick="q2('no')">Not yet kissed</button>
+
+<h2>3. How much do you love me?</h2>
+<button onclick="q3('100')">100%</button>
+<button onclick="q3('200')">200%</button>
+<button onclick="q3('Infinity')">Infinity ♾️</button>
+<button onclick="q3('0')">0%</button>
+
+<h2>4. Will you be my Valentine?</h2>
+<button onclick="q4('Yes')">Yes 💕</button>
+<button id="noBtn">No ❌</button>
+
 </div>
 
-<!-- QUIZ -->
-<div class="section active" id="quiz" style="display:none">
-  <div class="score">Score: <span id="score">0</span>/4</div>
-  <div class="card">
-    <h2 id="qText"></h2>
-    <img id="qPhoto" class="photo" style="display:none">
-    <div class="options" id="options"></div>
-  </div>
+<!-- LOVE LETTER -->
+<div class="container" id="loveLetter">
+<h2>💌 My Love</h2>
+<p>
+You are my calm and my chaos,  
+my poetry and my promise.  
+<br><br>
+I choose you — always 💙
+</p>
 </div>
 
-<!-- FINAL QUESTION -->
-<div class="section" id="finalQ">
-  <div class="card">
-    <h2>Will you be my Valentine? 💘</h2>
-    <button onclick="yes()">YES ❤️</button>
-    <div class="no-box">
-      <button class="no-btn" id="noBtn">NO 🙈</button>
-    </div>
-  </div>
-</div>
-
-<!-- BOTTLE -->
-<div class="section" id="bottleScene">
-  <div class="bottle" onclick="openLetter()">🍾</div>
-  <div class="girl" id="girl">👩‍❤️‍💋‍👨</div>
-</div>
-
-<!-- LETTER -->
-<div class="section" id="letterSection">
-  <div class="letter" id="letter">
-    <p><strong>Devumma,</strong></p>
-
-    <p>I find myself reliving every little moment that led me to you from a stranger, to a friend, to the love of my life.</p>
-
-    <p>I still remember the first day we met. I never imagined that the girl I met that day would one day become the love of my life, my future, my Devumma.</p>
-
-    <p>I still remember our first chat a simple “Hi” that somehow felt like the beginning of a beautiful story.</p>
-
-    <p>Yes, we’ve had our fights. But even in those moments, you never stopped being my Devumma.</p>
-
-    <p>And now, my heart counts down every moment until <span class="ring">💍 September 7th</span> our engagement day.</p>
-
-    <p>And I promise, from our first hello to our last breath I am yours, Always.</p>
-
-    <div class="signature">
-      With endless love,<br>
-      Your Kannan kutty ❤️
-    </div>
+<!-- POPUP -->
+<div id="popup" onclick="closePopup()">
+  <div class="popup-box">
+    <p id="popupText"></p>
   </div>
 </div>
 
 <script>
-const questions=[
- {
-  q:"When did I first fall for you?",
-  options:["May 22","Feb 22","January 22","I don’t remember"],
-  correct:0
- },
- {
-  q:"When did I kiss you first?",
-  options:["Sep 7","October 18","December 10","Not yet kissed"],
-  correct:0
- },
- {
-  q:"Where did we click this photo?",
-  photo:"photo.jpg",
-  options:["Your home","My home","Someone’s home"],
-  correct:2
- },
- {
-  q:"How much do you love me?",
-  options:["100%","200%","Infinity"],
-  correct:2
+let score=0,wrong=0,dead=false;
+
+function popup(msg){
+ document.getElementById("popupText").innerText=msg;
+ document.getElementById("popup").style.display="flex";
+ floatIcon();
+}
+function closePopup(){
+ document.getElementById("popup").style.display="none";
+}
+function update(){
+ scoreEl.innerText=score;
+ wrongEl.innerText=wrong;
+}
+const scoreEl=document.getElementById("score");
+const wrongEl=document.getElementById("wrong");
+
+function fail(){
+ wrong++;
+ update();
+ if(wrong>=2){
+   dead=true;
+   popup("⛔ DISQUALIFIED\nYour BF is waiting to scold you 😤");
  }
-];
-
-let index=0, score=0;
-
-function nextSection(step){
- document.getElementById("intro").style.display="none";
- document.getElementById("quiz").style.display="flex";
- loadQuestion();
 }
 
-function loadQuestion(){
- const q=questions[index];
- document.getElementById("qText").innerText=q.q;
- const opts=document.getElementById("options");
- opts.innerHTML="";
- document.getElementById("qPhoto").style.display="none";
-
- if(q.photo){
-   const img=document.getElementById("qPhoto");
-   img.src=q.photo;
-   img.style.display="block";
- }
-
- q.options.forEach((o,i)=>{
-   const b=document.createElement("button");
-   b.innerText=o;
-   b.onclick=()=>answer(i,b);
-   opts.appendChild(b);
- });
+function floatIcon(){
+ let f=document.createElement("div");
+ f.className="float";
+ f.innerText=Math.random()>0.5?"❤️":"💋";
+ f.style.left=Math.random()*100+"vw";
+ f.style.bottom="0";
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),3000);
 }
 
-function answer(i,btn){
- const q=questions[index];
- document.querySelectorAll(".options button").forEach(b=>b.disabled=true);
-
- if(i===q.correct){
-   score++;
-   petals();
-   alert("😘");
- }else{
-   alert("😅");
- }
- document.getElementById("score").innerText=score;
-
- setTimeout(()=>{
-   index++;
-   if(index<questions.length) loadQuestion();
-   else{
-     document.getElementById("quiz").style.display="none";
-     document.getElementById("finalQ").style.display="flex";
-   }
- },700);
-}
-
-function petals(){
- for(let i=0;i<15;i++){
+function roses(){
+ for(let i=0;i<25;i++){
    let p=document.createElement("div");
    p.className="petal";
+   p.innerText="🌹";
    p.style.left=Math.random()*100+"vw";
-   p.style.animationDuration=4+Math.random()*3+"s";
    document.body.appendChild(p);
-   setTimeout(()=>p.remove(),7000);
+   setTimeout(()=>p.remove(),4000);
  }
 }
 
+/* QUESTIONS */
+function q1(a){
+ if(dead)return;
+ if(a==="May 22"){score++;popup("💋 Kiss!");roses();}
+ else{popup(a==="Feb 22"?"😡 You're in trouble":a==="January 22"?"❌ Still wrong":a==="July 28"?"🤥 Liar":"😒 Think harder");fail();return;}
+ update();
+}
+function q2(a){
+ if(dead)return;
+ if(a==="Sep 7"){score++;popup("💋💋 HUGE KISS!");roses();update();}
+ else{popup("😈 I will bite you after the test");fail();}
+}
+function q3(a){
+ if(dead)return;
+ if(a==="Infinity"){score++;popup("💙 You're my Ponnuttan Ummmaaa 😘");roses();update();}
+ else{popup(a==="100"?"❌ Not enough":a==="200"?"❌ Still small":"😡 I hate you");fail();}
+}
+function q4(a){
+ if(dead)return;
+ if(a==="Yes"){
+   score++;
+   popup("💖 You're my calm, my chaos, my smile… I love youuuuuuuuu");
+   roses();
+   update();
+   quiz.style.display="none";
+   loveLetter.style.display="block";
+ } else {
+   popup("⚠️ Invalid choice\nSystem detected: You're only my Valentine 💘");
+ }
+}
+
+/* RUNAWAY NO */
 const noBtn=document.getElementById("noBtn");
-noBtn.onmouseover=()=>{
- noBtn.style.left=Math.random()*200+"px";
- noBtn.style.top=Math.random()*30+"px";
-};
-
-function yes(){
- alert("Thanks ❤️");
- document.getElementById("finalQ").style.display="none";
- document.getElementById("bottleScene").style.display="flex";
-}
-
-function openLetter(){
- document.querySelector(".bottle").classList.add("break");
- document.getElementById("girl").style.opacity=1;
- setTimeout(()=>{
-   document.getElementById("bottleScene").style.display="none";
-   document.getElementById("letterSection").style.display="flex";
-   document.getElementById("letter").style.display="block";
- },1200);
-}
+noBtn.addEventListener("mouseover",()=>{
+ noBtn.style.position="absolute";
+ noBtn.style.left=Math.random()*80+"%";
+ noBtn.style.top=Math.random()*80+"%";
+});
 </script>
 
 </body>
