@@ -8,158 +8,141 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* CINEMATIC SKY */
+/* SOFT SKY BACKGROUND */
 body{
   font-family:'Poppins',sans-serif;
   min-height:100vh;
   background:
-    radial-gradient(1200px at 10% 10%,rgba(170,220,255,.6),transparent 60%),
-    radial-gradient(900px at 90% 30%,rgba(200,240,255,.5),transparent 55%),
-    linear-gradient(#dff3ff,#ffffff);
+    linear-gradient(to bottom,#bfe7ff 0%,#eaf6ff 45%,#ffffff 100%);
   overflow-x:hidden;
 }
 
-/* FILM GRAIN */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:url('https://i.imgur.com/8QfKZ0n.png');
-  opacity:.05;
-  pointer-events:none;
-  z-index:1;
-}
-
-/* CINEMA VIGNETTE */
+/* CINEMATIC VIGNETTE */
 body::after{
   content:'';
   position:fixed;
   inset:0;
-  box-shadow:inset 0 0 260px rgba(0,0,0,.38);
+  box-shadow:inset 0 0 180px rgba(0,0,0,.25);
   pointer-events:none;
-  z-index:2;
 }
 
 /* INTRO */
 #intro{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle,#060606,#000);
+  background:radial-gradient(circle,#050505,#000);
   color:#fff;
   display:flex;
-  align-items:center;
-  justify-content:center;
   flex-direction:column;
-  z-index:999;
-  animation:introOut 2s ease forwards;
-  animation-delay:8s;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+  animation:fadeOut 2s ease forwards;
+  animation-delay:6s;
 }
 #intro h1{
   font-family:'Playfair Display',serif;
-  font-size:3.6rem;
-  max-width:900px;
+  font-size:3.2rem;
   text-align:center;
-  line-height:1.45;
-  opacity:0;
-  animation:fadeWords 6s ease forwards;
+  max-width:900px;
+  line-height:1.4;
+  animation:slideUp 5s ease;
 }
 #intro span{
-  margin-top:28px;
-  letter-spacing:6px;
+  margin-top:18px;
   opacity:.6;
+  letter-spacing:4px;
 }
-
-@keyframes fadeWords{
-  from{opacity:0;transform:translateY(80px)}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(60px)}
   to{opacity:1;transform:none}
 }
-@keyframes introOut{
+@keyframes fadeOut{
   to{opacity:0;pointer-events:none}
 }
 
 /* CLOUDS */
 .cloud{
   position:absolute;
-  background:white;
-  border-radius:120px;
-  opacity:.28;
-  filter:blur(4px);
-  animation:cloud linear infinite;
+  background:#fff;
+  border-radius:60px;
+  opacity:.4;
+  animation:cloudMove linear infinite;
 }
 .cloud::before,.cloud::after{
   content:'';
   position:absolute;
-  background:white;
+  background:#fff;
   border-radius:50%;
 }
-.cloud::before{width:90px;height:90px;top:-45px;left:25px}
-.cloud::after{width:120px;height:120px;top:-60px;right:25px}
-
-@keyframes cloud{
-  from{left:-400px}
+.cloud::before{width:60px;height:60px;top:-30px;left:15px}
+.cloud::after{width:80px;height:80px;top:-40px;right:15px}
+@keyframes cloudMove{
+  from{left:-300px}
   to{left:120%}
 }
 
 /* GLASS CARD */
 .container{
-  position:relative;
-  z-index:5;
-  max-width:1000px;
-  margin:140px auto;
-  padding:60px;
-  background:rgba(255,255,255,.42);
-  backdrop-filter:blur(26px);
-  border-radius:48px;
+  max-width:950px;
+  margin:120px auto;
+  padding:50px;
+  background:rgba(255,255,255,.4);
+  backdrop-filter:blur(18px);
+  border-radius:36px;
   box-shadow:
-    0 60px 160px rgba(0,0,0,.28),
-    inset 0 0 80px rgba(255,255,255,.35);
+    0 40px 120px rgba(0,0,0,.25),
+    inset 0 0 60px rgba(255,255,255,.3);
 }
 
 /* HEADINGS */
 h2{
   font-family:'Playfair Display',serif;
-  font-size:1.9rem;
-  margin:45px 0 24px;
+  font-size:1.7rem;
+  margin:38px 0 20px;
 }
 
 /* BUTTONS */
 button{
-  padding:17px 40px;
+  padding:15px 34px;
   border:none;
-  border-radius:70px;
-  background:linear-gradient(135deg,#7bbcff,#b6dcff);
+  border-radius:50px;
+  background:linear-gradient(135deg,#6fb1fc,#9fd3ff);
   color:#fff;
   font-size:15px;
-  margin:10px;
   cursor:pointer;
-  transition:.45s;
-  box-shadow:0 14px 36px rgba(0,0,0,.2);
+  margin:8px;
+  transition:.35s;
+  box-shadow:0 10px 24px rgba(0,0,0,.15);
 }
 button:hover{
-  transform:translateY(-6px) scale(1.12);
-  box-shadow:0 26px 70px rgba(123,188,255,.95);
+  transform:scale(1.08);
+  box-shadow:0 16px 40px rgba(111,177,252,.7);
 }
 
 /* SCORE */
-.scoreBox{text-align:center;font-size:1.15rem}
+.scoreBox{
+  text-align:center;
+  font-size:1.1rem;
+  font-weight:500;
+}
 
 /* POPUP */
 #popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.7);
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:50;
+  z-index:99;
 }
 .popup-box{
-  background:rgba(255,255,255,.96);
-  padding:44px;
-  border-radius:36px;
+  background:#fff;
+  padding:38px;
+  border-radius:28px;
   max-width:420px;
   text-align:center;
 }
@@ -168,49 +151,45 @@ button:hover{
 .float{
   position:fixed;
   bottom:0;
-  font-size:30px;
-  animation:floatUp 4s linear forwards;
+  font-size:26px;
+  animation:floatUp 3s linear forwards;
 }
 @keyframes floatUp{
-  to{transform:translateY(-300px);opacity:0}
+  to{transform:translateY(-240px);opacity:0}
 }
 
 /* ROSES */
 .petal{
   position:fixed;
   top:-40px;
-  font-size:28px;
-  animation:fall 5.2s linear forwards;
+  font-size:24px;
+  animation:fall 4.5s linear forwards;
 }
 @keyframes fall{
   to{transform:translateY(120vh) rotate(360deg);opacity:0}
 }
 
 /* LETTER SCENE */
-#letterScene{display:none;text-align:center}
+#letterScene{text-align:center;display:none}
 #bottle{
-  font-size:140px;
-  animation:floatBottle 3.5s ease-in-out infinite;
+  font-size:120px;
+  animation:floatBottle 3s ease-in-out infinite;
 }
 @keyframes floatBottle{
-  50%{transform:translateY(-20px)}
+  50%{transform:translateY(-14px)}
 }
-#break{display:none;font-size:100px}
+#break{display:none;font-size:80px}
 #letter{
   display:none;
-  margin-top:40px;
-  padding:50px;
-  background:rgba(255,255,255,.92);
-  border-radius:36px;
-  box-shadow:0 40px 110px rgba(0,0,0,.3);
+  margin-top:30px;
+  padding:40px;
+  background:rgba(255,255,255,.9);
+  border-radius:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
 }
 #letter h2{
   font-family:'Great Vibes',cursive;
-  font-size:3.4rem;
-}
-#letter p{
-  font-size:1.12rem;
-  line-height:1.9;
+  font-size:3rem;
 }
 </style>
 </head>
@@ -220,12 +199,12 @@ button:hover{
 <!-- INTRO -->
 <div id="intro">
   <h1>“At the touch of love everyone becomes a poet.”</h1>
-  <span>A PRIVATE LOVE STORY</span>
+  <span>A little story for you</span>
 </div>
 
 <!-- CLOUDS -->
-<div class="cloud" style="top:90px;width:320px;height:110px;animation-duration:120s"></div>
-<div class="cloud" style="top:180px;width:380px;height:130px;animation-duration:150s"></div>
+<div class="cloud" style="top:80px;width:260px;height:90px;animation-duration:90s"></div>
+<div class="cloud" style="top:160px;width:320px;height:110px;animation-duration:120s"></div>
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
@@ -234,30 +213,33 @@ button:hover{
 
 <!-- QUIZ -->
 <div class="container" id="quiz">
-<div class="scoreBox">Score ❤️ <span id="score">0</span> | Wrong ❌ <span id="wrong">0</span></div>
+  <div class="scoreBox">
+    Score ❤️ <span id="score">0</span> |
+    Wrong ❌ <span id="wrong">0</span>
+  </div>
 
-<h2>1. When did I first fall for you?</h2>
-<button onclick="q1('May 22')">May 22</button>
-<button onclick="q1('July 28')">July 28</button>
-<button onclick="q1('Feb 22')">Feb 22</button>
-<button onclick="q1('January 22')">January 22</button>
-<button onclick="q1('idk')">I don't remember</button>
+  <h2>1. When did I first fall for you?</h2>
+  <button onclick="q1('May 22')">May 22</button>
+  <button onclick="q1('July 28')">July 28</button>
+  <button onclick="q1('Feb 22')">Feb 22</button>
+  <button onclick="q1('January 22')">January 22</button>
+  <button onclick="q1('idk')">I don't remember</button>
 
-<h2>2. When did I kiss you first?</h2>
-<button onclick="q2('Sep 7')">Sep 7</button>
-<button onclick="q2('October 15')">October 15</button>
-<button onclick="q2('December 20')">December 20</button>
-<button onclick="q2('no')">Not yet kissed</button>
+  <h2>2. When did I kiss you first?</h2>
+  <button onclick="q2('Sep 7')">Sep 7</button>
+  <button onclick="q2('October 15')">October 15</button>
+  <button onclick="q2('December 20')">December 20</button>
+  <button onclick="q2('no')">Not yet kissed</button>
 
-<h2>3. How much do you love me?</h2>
-<button onclick="q3('100')">100%</button>
-<button onclick="q3('200')">200%</button>
-<button onclick="q3('Infinity')">Infinity ♾️</button>
-<button onclick="q3('0')">0%</button>
+  <h2>3. How much do you love me?</h2>
+  <button onclick="q3('100')">100%</button>
+  <button onclick="q3('200')">200%</button>
+  <button onclick="q3('Infinity')">Infinity ♾️</button>
+  <button onclick="q3('0')">0%</button>
 
-<h2>4. Will you be my Valentine?</h2>
-<button onclick="q4('Yes')">Yes 💕</button>
-<button id="noBtn">No ❌</button>
+  <h2>4. Will you be my Valentine?</h2>
+  <button onclick="q4('Yes')">Yes 💕</button>
+  <button id="noBtn">No ❌</button>
 </div>
 
 <!-- LETTER -->
@@ -267,8 +249,7 @@ button:hover{
   <div id="letter">
     <h2>My Love</h2>
     <p>
-      Like this bottle, my heart was sealed…<br>
-      until you touched it.<br><br>
+      Like this bottle, my heart was sealed…<br><br>
       You are my calm, my chaos,<br>
       my poetry, my forever.<br><br>
       I choose you — always 💙
@@ -282,67 +263,110 @@ button:hover{
 </div>
 
 <script>
-let score=0,wrong=0,dead=false;
+/* ELEMENTS */
+const scoreEl=document.getElementById("score");
+const wrongEl=document.getElementById("wrong");
 const popup=document.getElementById("popup");
 const popupText=document.getElementById("popupText");
+const quiz=document.getElementById("quiz");
+const letterScene=document.getElementById("letterScene");
+const bottle=document.getElementById("bottle");
+const breakEl=document.getElementById("break");
+const letter=document.getElementById("letter");
+const bgMusic=document.getElementById("bgMusic");
 
-setTimeout(()=>bgMusic.play().catch(()=>{}),9000);
+/* STATE */
+let score=0,wrong=0,dead=false;
+
+/* MUSIC */
+setTimeout(()=>bgMusic.play().catch(()=>{}),6500);
 document.body.addEventListener("click",()=>bgMusic.play().catch(()=>{}),{once:true});
 
-function msg(t){popupText.innerText=t;popup.style.display="flex";floatIcon();}
-function update(){scoreEl.innerText=score;wrongEl.innerText=wrong;}
-function fail(){wrong++;update();if(wrong>=2){dead=true;msg("⛔ Disqualified 😤");}}
-
+/* HELPERS */
+function update(){
+  scoreEl.textContent=score;
+  wrongEl.textContent=wrong;
+}
+function popupMsg(msg){
+  popupText.innerText=msg;
+  popup.style.display="flex";
+  floatIcon();
+}
+function fail(){
+  wrong++;update();
+  if(wrong>=2){
+    dead=true;
+    popupMsg("⛔ Disqualified\nYour BF is waiting 😤");
+  }
+}
 function floatIcon(){
- let f=document.createElement("div");
- f.className="float";
- f.innerText=Math.random()>0.5?"❤️":"💋";
- f.style.left=Math.random()*100+"vw";
- document.body.appendChild(f);
- setTimeout(()=>f.remove(),4000);
+  const f=document.createElement("div");
+  f.className="float";
+  f.innerText=Math.random()>0.5?"❤️":"💋";
+  f.style.left=Math.random()*100+"vw";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),3000);
 }
 function roses(){
- for(let i=0;i<40;i++){
-  let p=document.createElement("div");
-  p.className="petal";
-  p.innerText="🌹";
-  p.style.left=Math.random()*100+"vw";
-  document.body.appendChild(p);
-  setTimeout(()=>p.remove(),5200);
- }
+  for(let i=0;i<30;i++){
+    const p=document.createElement("div");
+    p.className="petal";
+    p.innerText="🌹";
+    p.style.left=Math.random()*100+"vw";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),4500);
+  }
 }
 
 /* QUESTIONS */
-function q1(a){if(dead)return;if(a==="May 22"){score++;msg("💋 Kiss");roses();}else{msg("❌ Wrong");fail();}update();}
-function q2(a){if(dead)return;if(a==="Sep 7"){score++;msg("💋💋 Huge Kiss");roses();}else{msg("😈 I will bite you");fail();}update();}
-function q3(a){if(dead)return;if(a==="Infinity"){score++;msg("💙 My Ponnuttan");roses();}else{msg("❌ Not enough");fail();}update();}
+function q1(a){
+  if(dead)return;
+  if(a==="May 22"){score++;popupMsg("💋 Kiss!");roses();}
+  else{popupMsg("❌ Wrong");fail();}
+  update();
+}
+function q2(a){
+  if(dead)return;
+  if(a==="Sep 7"){score++;popupMsg("💋💋 Huge Kiss!");roses();}
+  else{popupMsg("😈 I will bite you after");fail();}
+  update();
+}
+function q3(a){
+  if(dead)return;
+  if(a==="Infinity"){score++;popupMsg("💙 My Ponnuttan 😘");roses();}
+  else{popupMsg("❌ Not enough");fail();}
+  update();
+}
 function q4(a){
- if(dead)return;
- if(a==="Yes"){
-  score++;update();
-  msg("💖 I love you endlessly");
-  roses();
-  quiz.style.display="none";
-  setTimeout(()=>{
-    letterScene.style.display="block";
+  if(dead)return;
+  if(a==="Yes"){
+    score++;update();
+    popupMsg("💖 I love you endlessly");
+    roses();
+    quiz.style.display="none";
     setTimeout(()=>{
-      bottle.style.display="none";
-      break.style.display="block";
+      letterScene.style.display="block";
       setTimeout(()=>{
-        break.style.display="none";
-        letter.style.display="block";
-      },800);
-    },2300);
-  },1400);
- }else msg("⚠️ Invalid choice 💘");
+        bottle.style.display="none";
+        breakEl.style.display="block";
+        setTimeout(()=>{
+          breakEl.style.display="none";
+          letter.style.display="block";
+        },600);
+      },1800);
+    },1000);
+  }else{
+    popupMsg("⚠️ Invalid choice\nYou're only mine 💘");
+  }
 }
 
 /* RUNAWAY NO */
-noBtn.onmouseover=()=>{
- noBtn.style.position="absolute";
- noBtn.style.left=Math.random()*80+"%";
- noBtn.style.top=Math.random()*80+"%";
-};
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*80+"%";
+  noBtn.style.top=Math.random()*80+"%";
+});
 </script>
 
 </body>
