@@ -315,21 +315,21 @@ function q4(a){ if(dead)return;
     letter.style.display="block";
    },600);
   },2500);
-  setTimeout(()=>{letterScene.style.display="none"; showRing();},6000);
+  setTimeout(()=>{letterScene.style.display="none"; showRing();},15000);
  } else popupMsg("⚠️ Only YES allowed 💘");
 }
 
 function showRing(){
  ringScene.style.display="block";
- setTimeout(()=>ring.style.display="block",1200);
- setTimeout(()=>proposalText.style.display="block",2500);
- setTimeout(()=>document.querySelector(".proposalBtns").style.display="block",3500);
+ setTimeout(()=>ring.style.display="block",2200);
+ setTimeout(()=>proposalText.style.display="block",3500);
+ setTimeout(()=>document.querySelector(".proposalBtns").style.display="block",4500);
 }
 
 function finalYes(){
  popupMsg("💍 Forever starts now ❤️");
  roses();
- setTimeout(showScoreCard,3000);
+ setTimeout(showScoreCard,6000);
 }
 
 function showScoreCard(){
