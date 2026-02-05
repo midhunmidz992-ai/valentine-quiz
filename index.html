@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Valentine 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to bottom, #87ceeb, #dff3ff);
+        overflow-x: hidden;
+        color: #033;
+    }
+
+    /* Clouds */
+    .cloud {
+        position: absolute;
+        background: white;
+        border-radius: 50px;
+        opacity: 0.8;
+        animation: float 60s linear infinite;
+    }
+    .cloud::before, .cloud::after {
+        content: "";
+        position: absolute;
+        background: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        top: -20px;
+    }
+    .cloud::before { left: 10px; }
+    .cloud::after { right: 10px; }
+
+    @keyframes float {
+        from { left: -200px; }
+        to { left: 110%; }
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 60px auto;
+        background: rgba(255,255,255,0.9);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .score {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .question {
+        margin-bottom: 35px;
+    }
+
+    .question h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .options button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+        border: none;
+        border-radius: 12px;
+        background: #e6f7ff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .options button:hover {
+        background: #bfe9ff;
+        transform: scale(1.03);
+    }
+
+    .final {
+        display: none;
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Clouds -->
+<div class="cloud" style="width:120px;height:60px;top:50px;animation-duration:80s;"></div>
+<div class="cloud" style="width:160px;height:70px;top:150px;animation-duration:100s;"></div>
+<div class="cloud" style="width:100px;height:50px;top:250px;animation-duration:70s;"></div>
+
+<div class="container">
+    <h1>💙 Valentine Quiz 💙</h1>
+    <div class="score">Score: <span id="score">0</span> / 4</div>
+
+    <!-- Question 1 -->
+    <div class="question">
+        <h2>1. When did I first fall for you?</h2>
+        <div class="options">
+            <button onclick="q1('May 22')">May 22</button>
+            <button onclick="q1('July 28')">July 28</button>
+            <button onclick="q1('Feb 22')">Feb 22</button>
+            <button onclick="q1('January 22')">January 22</button>
+            <button onclick="q1('I don’t remember')">I don’t remember</button>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <h2>2. When did I kiss you first?</h2>
+        <div class="options">
+            <button onclick="q2('Sep 7')">Sep 7</button>
+            <button onclick="q2('October 15')">October 15</button>
+            <button onclick="q2('December 20')">December 20</button>
+            <button onclick="q2('Not yet kissed')">Not yet kissed</button>
+        </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <h2>3. How much do you love me?</h2>
+        <div class="options">
+            <button onclick="q3('100')">100%</button>
+            <button onclick="q3('200')">200%</button>
+            <button onclick="q3('Infinity')">Infinity</button>
+            <button onclick="q3('0')">0%</button>
+        </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+        <h2>4. Will you be my Valentine?</h2>
+        <div class="options">
+            <button onclick="q4('Yes')">Yes 💖</button>
+            <button onclick="q4('No')">No 😏</button>
+        </div>
+    </div>
+
+    <div class="final" id="finalMessage"></div>
+</div>
+
+<script>
+let score = 0;
+let answered = {q1:false, q2:false, q3:false, q4:false};
+
+function updateScore() {
+    document.getElementById("score").innerText = score;
+}
+
+function q1(ans) {
+    if (answered.q1) return;
+    answered.q1 = true;
+
+    if (ans === "May 22") {
+        alert("💋 Kiss!");
+        score++;
+    } else if (ans === "Feb 22") {
+        alert("😡 You're in trouble!");
+    } else if (ans === "January 22") {
+        alert("❌ Still wrong");
+    } else if (ans === "July 28") {
+        alert("🤥 Liar");
+    } else {
+        alert("😒 Think harder");
+    }
+    updateScore();
+}
+
+function q2(ans) {
+    if (answered.q2) return;
+    answered.q2 = true;
+
+    if (ans === "Sep 7") {
+        alert("💋💋 HUGE KISS!");
+        score++;
+    } else {
+        alert("😈 I will bite you after the test");
+    }
+    updateScore();
+}
+
+function q3(ans) {
+    if (answered.q3) return;
+    answered.q3 = true;
+
+    if (ans === "Infinity") {
+        alert("💙 I know because you're my Ponnuttan Ummmaaa 😘");
+        score++;
+    } else if (ans === "100") {
+        alert("❌ Not enough");
+    } else if (ans === "200") {
+        alert("❌ Still small");
+    } else {
+        alert("😡 I hate you");
+    }
+    updateScore();
+}
+
+function q4(ans) {
+    if (answered.q4) return;
+    answered.q4 = true;
+
+    if (ans === "No") {
+        alert("⚠️ Invalid choice\nSystem already detected: You're only my Valentine 💘");
+    } else {
+        alert("💖 You're my calm, my chaos, my smile… and I love youuuuuuuuu 💕");
+        score++;
+    }
+    updateScore();
+    finish();
+}
+
+function finish() {
+    setTimeout(() => {
+        if (score < 4) {
+            alert("⏰ Time's up!\nYour BF is waiting for you to scold 😤");
+        }
+        document.getElementById("finalMessage").style.display = "block";
+        document.getElementById("finalMessage").innerText =
+            "Final Score: " + score + " / 4 💙";
+    }, 500);
+}
+</script>
+
+</body>
+</html>
